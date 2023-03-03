@@ -13,10 +13,10 @@
 </head>
 <body>
     <h1>Your contact information</h1>
-    <form action = "#"
-    data-th-action ="@{/addressbook}"
-    data-th-object= "${contact}"
-    method = "post">
+    <form action="#"
+    data-th-action="@{/contact}"
+    data-th-object="${contact}"
+    method="post">
     <p>
         Name:
         <input type ="text" data-th-field="*{name}"/>
@@ -53,8 +53,8 @@
         data-th-errors = "*{dateOfBirth}"></span>
         <br/>
         <span class = "error"
-        data-th-if = "${#fields.hasErrors('Age')}"
-        data-th-errors = "*{Age}"></span>
+        data-th-if = "${#fields.hasErrors('age')}"
+        data-th-errors = "*{age}"></span>
     </p>
     <br/>
     <p>

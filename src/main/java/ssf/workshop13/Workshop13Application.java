@@ -20,10 +20,13 @@ public class Workshop13Application {
 		SpringApplication app = new SpringApplication(Workshop13Application.class);
 		DefaultApplicationArguments appArgs = new DefaultApplicationArguments(args);
 		List<String> opsVal = appArgs.getOptionValues("dataDir");
+		System.out.println("before createDir");
 		if(null != opsVal){
 			logger.info("" + (String)opsVal.get(0));
+			System.out.println("inside create Dir");
 			createDir((String)opsVal.get(0));
 		} else{
+			System.out.println("exit");
 			System.exit(1);
 		}
 		app.run(args);

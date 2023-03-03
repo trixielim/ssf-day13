@@ -31,7 +31,6 @@ public class Contacts {
         try {
             FileWriter fileWriter = new FileWriter(getDataDir(appArgs, defaultDataDir) + "/" + dataFileName);
             printWriter = new PrintWriter(fileWriter);
-            printWriter.println(ctc.getId());
             printWriter.println(ctc.getName());
             printWriter.println(ctc.getEmail());
             printWriter.println(ctc.getPhoneNumber());
@@ -44,14 +43,14 @@ public class Contacts {
         model.addAttribute("contact", new Contact(ctc.getId(), ctc.getName(), ctc.getEmail(), ctc.getPhoneNumber(), ctc.getDateOfBirth()));
     }
 
-    public void getContactById(Model model, String contactID, ApplicationArguments appArgs, String defaultDataDir){
+    public void getContactById(Model model, String contactId, ApplicationArguments appArgs, String defaultDataDir){
         Contact ctc = new Contact();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM-DD");
         try {
-            Path filePath = new File(getDataDir(appArgs, defaultDataDir) + "/" + contactID).toPath();
+            Path filePath = new File(getDataDir(appArgs, defaultDataDir) + "/" + contactId).toPath();
             Charset charset = Charset.forName("UTF-8");
             List<String> stringValues = Files.readAllLines(filePath, charset);
-            ctc.setId(contactID);
+            ctc.setId(contactId);
             ctc.setName(stringValues.get(0));
             ctc.setEmail(stringValues.get(1));
             ctc.setPhoneNumber(stringValues.get(2));
@@ -66,7 +65,7 @@ public class Contacts {
 
     public void getAllContacts(Model model, ApplicationArguments appArgs, String defaultDataDir){
         Set <String> dataFiles = listFiles(getDataDir(appArgs, defaultDataDir));
-        model.addAttribute("contacts", null);
+        model.addAttribute("contacts", dataFiles);
     }
 
     //task5

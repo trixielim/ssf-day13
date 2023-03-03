@@ -40,18 +40,19 @@ public class Contact implements Serializable{
 
     //create constructor
     public Contact (){
-        this.id = generateId(0);
+        this.id = generateId(8);
     }
     
-    public Contact(String name, String email, String phoneNumber, LocalDate dateOfBirth){
-        this.name = name;
+    public Contact(String name , String email, String phoneNumber, LocalDate dateOfBirth){
+        this.id = generateId(8);
+        this.name= name;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.dateOfBirth = dateOfBirth;
     }
 
     public Contact(String id, String name, String email, String phoneNumber, LocalDate dateOfBirth){
-        this.id = generateId(0);
+        this.id = id;
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -108,7 +109,7 @@ public class Contact implements Serializable{
     public void setDateOfBirth(LocalDate dateOfBirth) {
         int calculateAge = 0;
         if(dateOfBirth != null) {
-            Period.between(dateOfBirth, LocalDate.now()).getYears();
+            calculateAge = Period.between(dateOfBirth, LocalDate.now()).getYears();
         }
         this.dateOfBirth = dateOfBirth;
         this.age = calculateAge;

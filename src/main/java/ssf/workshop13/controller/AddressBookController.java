@@ -16,7 +16,7 @@ import ssf.workshop13.model.Contact;
 import ssf.workshop13.util.Contacts;
 
 @Controller
-@RequestMapping(path="/addressbook")
+@RequestMapping(path="/contact")
 public class AddressBookController {
 
     @Autowired
@@ -46,9 +46,9 @@ public class AddressBookController {
         return "showContact";
     }
 
-    @GetMapping(path = "{contactID}")
-    public String getContactId(Model model, @PathVariable String contactID){
-        ctcs.getContactById(model, contactID, appArgs, defaultDataDir);
+    @GetMapping(path = "{contactId}")
+    public String getContactId(Model model, @PathVariable String contactId){
+        ctcs.getContactById(model, contactId, appArgs, defaultDataDir);
         return "showContact";
     }
 
